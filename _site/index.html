@@ -1,0 +1,146 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>UGJKA.NET</title>
+    <meta name="description" content="Radio">
+    <meta name="author" content="ugjka">
+    <style>
+        html {
+            min-height: 100%;
+        }
+
+        body {
+            background: url(background.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            min-height: 100%;
+        }
+
+        h1 {
+            font-family: Arial, Helvetica, sans-serif;
+            width: 100%;
+            background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+        }
+
+        .top {
+            display: flex;
+        }
+
+        button {
+            font-family: Arial, Helvetica, sans-serif;
+            margin-top: 21.440px;
+            margin-bottom: 21.440px;
+            color: white;
+            background-color: black;
+        }
+
+        button:hover {
+            color: black;
+            background-color: white;
+        }
+
+        .root {
+            margin-right: 20%;
+            margin-left: 20%;
+        }
+
+        @media only screen and (max-width: 800px) {
+            .root {
+                margin-right: 0px;
+                margin-left: 0px;
+            }
+            .top {
+                margin-left: 75px;
+            }
+        }
+
+        .wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            /* 16:9 */
+            height: 0;
+        }
+
+        .wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .home {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <a class="home" href="/"><img src="./axe.png" alt="home"></a>
+    <div class="root">
+        <div class="top">
+            <h1>Press Play!</h1>
+            <button onclick="playNext()" type="button">Skip...</button>
+        </div>
+        <div class="wrapper">
+            <div class="player"></div>
+        </div>
+    </div>
+    <script src="./yt-player.js"></script>
+    <script>
+        let videos = [
+            "xVnvqxmbOOA",
+            "3kNtS8N_e7M",
+            "QTscEhk8FBk",
+            "7wQ_qs-vn2E",
+            "MMUZEMoBi4w",
+            "NG3LPrqNStM",
+            "GZIjzo7VrV0",
+            "XAiarWPRn0s",
+            "AlDHNsfQ_b0",
+            "jv3i7STJofk",
+            "rEamE0MYPkg",
+        ];
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+        shuffleArray(videos);
+        let opts = {
+            modestBranding: true,
+            related: false,
+            annotations: false,
+            fullscreen: false,
+            keyboard: false,
+            captions: false,
+            controls: false,
+        }
+        player = new ytPlayer(".player", opts);
+        let i = 0;
+        function playNext() {
+            if (i >= videos.length - 1) {
+                i = 0;
+            } else {
+                i++;
+            }
+            player.load(videos[i])
+            player.play();
+        }
+        player.load(videos[i]);
+        player.on('unplayable', () => { playNext(); })
+        player.on('ended', () => { playNext(); })
+    </script>
+</body>
+
+</html>
