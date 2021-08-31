@@ -61,13 +61,14 @@
             }
         }
 
+        
         .wrapper {
             position: relative;
             padding-bottom: 56.25%;
             /* 16:9 */
             height: 0;
         }
-
+        
         .wrapper iframe {
             position: absolute;
             top: 0;
@@ -76,6 +77,12 @@
             height: 100%;
         }
 
+        @media only screen and (max-height: 400px) {
+            .wrapper {
+                padding-bottom: 35%;
+            }
+        }
+        
         .home {
             position: fixed;
             top: 10px;
