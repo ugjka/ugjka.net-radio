@@ -235,11 +235,13 @@
             } else {
                 i++;
             }
-            player.load(videos[i])
+            player.load(videos[i]);
+            player.setVolume(100);
             player.play();
         }
         player.load(videos[i]);
         player.on('unplayable', () => { playNext(); })
+        player.setVolume(100);
         player.on('ended', () => { playNext(); })
     </script>
 </body>
