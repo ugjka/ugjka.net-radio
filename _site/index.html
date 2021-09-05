@@ -106,6 +106,7 @@
     <script src="./yt-player.js"></script>
     <script>
         let videos = [
+            "VvwAX7wnAJI",
             "xVnvqxmbOOA",
             "3kNtS8N_e7M",
             "QTscEhk8FBk",
@@ -221,7 +222,9 @@
             }
             return array;
         }
-        videos = shuffleArray(videos);
+        for (let i =0; i < 222; i++){
+            videos = shuffleArray(videos);
+        }
         let opts = {
             modestBranding: true,
             related: false,
