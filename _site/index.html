@@ -222,13 +222,13 @@
             "PGNiXGX2nLU",
             "OOAMfUJ3tsc",
             "6WJFjXtHcy4",
-	    "-Kn4Jr9uTyk",
+            "-Kn4Jr9uTyk",
         ];
-        function cryptoRandom(){
+        function cryptoRandom() {
             let crypto = window.crypto;
             let arr = new Uint32Array(1);
             crypto.getRandomValues(arr);
-            return arr[0] / (Math.pow(2,32)-1);
+            return arr[0] / (Math.pow(2, 32) - 1);
         }
         function shuffleArray(array) {
             var currentIndex = array.length, randomIndex;
@@ -240,7 +240,7 @@
             }
             return array;
         }
-        for (let i =0; i < 222; i++){
+        for (let i = 0; i < 222; i++) {
             videos = shuffleArray(videos);
         }
         let opts = {
@@ -260,9 +260,7 @@
             } else {
                 i++;
             }
-            player.load(videos[i]);
-            player.setVolume(100);
-            player.play();
+            player.load(videos[i], true);
         }
         player.load(videos[i]);
         player.on('unplayable', () => { playNext(); })
