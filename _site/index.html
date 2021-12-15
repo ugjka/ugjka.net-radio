@@ -275,10 +275,10 @@
             }
             player.load(videos[i], true);
         }
-        player.load(videos[i]);
+        player.on('ended', () => { playNext(); })
         player.on('unplayable', () => { playNext(); })
         player.setVolume(100);
-        player.on('ended', () => { playNext(); })
+        player.load(videos[i]);
     </script>
 </body>
 
