@@ -284,7 +284,10 @@
             player.load(videos[i], true);
         }
         player.on('ended', () => { playNext(); })
-        player.on('unplayable', () => { playNext(); })
+        player.on('unplayable', () => {
+            console.log("Unplayable ID: " + videos[i])
+            playNext();
+        })
         player.setVolume(100);
         player.load(videos[i]);
     </script>
